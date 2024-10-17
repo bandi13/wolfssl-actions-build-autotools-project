@@ -29,6 +29,10 @@ inputs:
   patch-file:
     description: 'The patch file to use when we are building an OSP project.'
 
+  token:
+    description: 'Token to use for checking out the repository'
+    default: ${{ github.token }}
+
   # wolfSSL specific
   user-settings:
     description: 'The user_settings.h file to use.'
@@ -41,6 +45,7 @@ runs:
       - uses: actions/checkout@v4
         with:
           repository:  ${{ inputs.repository }}
+          token: ${{ inputs.token }}
           ref:  ${{ inputs.ref }}
           path:  ${{ inputs.path }}
 
